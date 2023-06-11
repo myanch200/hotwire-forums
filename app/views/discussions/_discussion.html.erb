@@ -7,5 +7,7 @@
     <%=button_to "Delete", discussion_path(discussion), method: :delete, data: { turbo_method: :delete }, class: 'nav-link active', form: {
        data: { turbo_confirm: "Are you sure?" }
     } %>
+
+    <%= link_to 'See more...', discussion_path(discussion) %>
   </div>
 </div>
