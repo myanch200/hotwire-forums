@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h1>Discussions</h1>
+
+  <%= link_to 'New discussion', '#', class: 'btn btn-primary' %>
+</div>
+
+<div class="row mt-4">
+    <h3>New Descussions</h3>
+    <div class="col">
+      <div id="discussions">
+        <%= render @discussions %>
+      </div>
+    </div>
+</div>
