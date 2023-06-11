@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_discussion, only: %i[edit update]
   def index
     @discussions = Discussion.all
   end
@@ -22,9 +22,28 @@ class DiscussionsController < ApplicationController
   end
 
 
+  def edit
+
+  end
+
+  def update
+    respond_to do |f|
+      if @discussion.update(discussion_params)
+        f.html { redirect_to discussions_path, notice: 'Discussion updated.' }
+      else
+        f.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   private
 
   def discussion_params
     params.require(:discussion).permit(:name, :pinned, :closed)
+  end
+
+  def set_discussion
+    @discussion = Discussion.find(params[:id])
   end
 end
